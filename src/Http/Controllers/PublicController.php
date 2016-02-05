@@ -78,6 +78,7 @@ class PublicController extends BasePublicController
                 return $browserLocale;
             }
         }
+
         return config('app.locale');
     }
 
