@@ -59,18 +59,18 @@ class PublicController extends BasePublicController
         $homepage = $this->repository->getFirstBy('is_home', 1);
         $locale = config('app.locale');
         if (!config('typicms.domains')) {
-            $locale = $this->getBrowserLocaleOrDefault();
+            $locale = $this->getBrowserLanguageOrDefault();
         }
 
         return redirect($homepage->uri($locale));
     }
 
     /**
-     * Browser locale
+     * Get browser language or app.locale.
      *
      * @return string
      */
-    private function getBrowserLocaleOrDefault()
+    private function getBrowserLanguageOrDefault()
     {
         if ($browserLanguage = getenv('HTTP_ACCEPT_LANGUAGE')) {
             $browserLocale = substr($browserLanguage, 0, 2);
